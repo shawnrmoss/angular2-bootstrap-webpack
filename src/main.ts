@@ -1,4 +1,9 @@
 /*
+ * Services
+ */
+import { AuthService } from './app/services/auth.service';
+
+/*
  * Providers provided by Angular
  */
 import * as ngCore from 'angular2/core';
@@ -40,6 +45,7 @@ export function main() {
     ...ENV_PROVIDERS,
     ...HTTP_PROVIDERS,
     ...ROUTER_PROVIDERS,
+    AuthService,
     ngCore.provide(LocationStrategy, { useClass: HashLocationStrategy })
   ])
   .catch(err => console.error(err));

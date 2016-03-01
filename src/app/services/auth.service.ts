@@ -5,8 +5,8 @@ import { JwtHelper } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
-    private BASE_SERVICE_URL = 'http://localhost:65052/';
-    //private BASE_SERVICE_URL = 'http://myapi.mydomain.com/';
+    //private BASE_SERVICE_URL = 'http://localhost:65052/';
+    private BASE_SERVICE_URL = 'http://summitapi.azurewebsites.net/';
     private token: string;
     private userInfo: any = {};
     private permissions: any = {};

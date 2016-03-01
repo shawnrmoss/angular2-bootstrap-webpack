@@ -6,6 +6,9 @@ import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 
 import {RouterActive} from './directives/router-active';
+//Components
+import {Header} from './components/header/header';
+
 import {Home} from './views/home/home';
 import {About} from './views/about/about';
 
@@ -18,7 +21,7 @@ import '../assets/scss/main.scss';
 @Component({
   selector: 'app',
   providers: [ ...FORM_PROVIDERS ],
-  directives: [ ...ROUTER_DIRECTIVES, RouterActive ],
+  directives: [ ...ROUTER_DIRECTIVES, RouterActive, Header ],
   pipes: [],
   styles: [`
     nav ul {
@@ -36,21 +39,7 @@ import '../assets/scss/main.scss';
     }
   `],
   template: `
-    <header>
-      <nav>
-        <h1>Hello {{ name }}</h1>
-        <ul>
-          <li router-active>
-            <a [routerLink]=" ['Index'] ">Index</a>
-          </li>
-          <li router-active>
-            <a [routerLink]=" ['Home'] ">Home</a>
-          </li>
-          <li router-active>
-            <a [routerLink]=" ['About'] ">About</a>
-          </li>
-        </ul>
-      </nav>
+    <header>      
     </header>
 
     <main>
