@@ -14,6 +14,7 @@ import {AuthService} from './services/auth.service';
 import {Home} from './views/home/home';
 import {About} from './views/about/about';
 import {Login} from './views/login/login';
+import {MdComponents} from './views/md-components/md-components';
 
 //Components
 import {Header} from './components/header/header';
@@ -55,6 +56,7 @@ import './app.scss';
   { path: '/', component: Home, name: 'Index' },
   { path: '/home', component: Home, name: 'Home' },
   { path: '/about', component: About, name: 'About' },
+  { path: '/components', component: MdComponents, name: 'Components' },
   { path: '/login', component: Login, name: 'Login' },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   //{ path: '/about', loader: () => require('es6-promise!./about/about')('About'), name: 'About' },

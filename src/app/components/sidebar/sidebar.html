@@ -1,23 +1,23 @@
 <div class="row sidebar-actions" >
     <div class="col-xs-4 action-cell" [class.active]="activeTab === 1">
-        <button md-button class="md-icon-button" aria-label="More" (click)="setActiveTab(1)" >
-            <i md-icon>home</i>
-        </button>       
+        <a (click)="setActiveTab(1)" [class.active]="activeTab === 1" >
+            <i class="material-icons">home</i>
+        </a>         
     </div>
-    <div class="col-xs-4 action-cell" [class.active]="activeTab === 2">       
-        <button md-button class="md-icon-button" aria-label="More" (click)="setActiveTab(2)" [class.active]="activeTab === 2" >
-            <i md-icon>warning</i>
-        </button>       
+    <div class="col-xs-4 action-cell" [class.active]="activeTab === 2">  
+        <a (click)="setActiveTab(2)" [class.active]="activeTab === 2" >
+            <i class="material-icons">warning</i>
+        </a>            
     </div>
-    <div class="col-xs-4 action-cell" [class.active]="activeTab === 3"  >                
-        <button md-button class="md-icon-button" aria-label="More" (click)="setActiveTab(3)"  >
-            <i md-icon>settings</i>
-        </button>
+    <div class="col-xs-4 action-cell" [class.active]="activeTab === 3"  >   
+        <a (click)="setActiveTab(3)" [class.active]="activeTab === 3" >
+            <i class="material-icons">settings</i>
+        </a>                        
     </div>
 </div>
 
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12">        
         <quick-links *ngIf="activeTab === 1" >
         </quick-links>
         <alerts *ngIf="activeTab === 2" >
