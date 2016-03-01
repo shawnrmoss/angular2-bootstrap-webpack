@@ -6,8 +6,8 @@
 @import 'base/page';
 @import 'base/typography';
 
-
-.summitActionBtn{
+//Fixes an element to the bottom right
+.btm-right-fixed{
     position: fixed;
     right: 3%;
     bottom: 3%;

@@ -1,0 +1,57 @@
+<h3>About this App</h3>
+<p>
+    This web app is build off modern web methodologies using a combination of HTML5, CSS3 and Javascript. All the components
+    are fully reusable sets of code that run independent from the rest of the application.
+</p>
+
+<h3>Technology Stack </h3>
+<div class="list-group">
+    <a class="list-group-item disabled">
+                    Front End
+                </a>
+    <a class="list-group-item">HTML5</a>
+    <a class="list-group-item">CSS3</a>
+    <a class="list-group-item">SCSS</a>
+    <a class="list-group-item">Webpack Javascript Module Bundler</a>
+    <a class="list-group-item">Typescript</a>
+    <a class="list-group-item">Bootstrap 3</a>
+    <a class="list-group-item">Angular 2</a>
+    <a class="list-group-item">OAuth 2.0</a>
+    <a class="list-group-item disabled">
+                    Server
+                </a>
+    <a class="list-group-item">C#</a>
+    <a class="list-group-item">MS WebAPI 2</a>
+    <a class="list-group-item">ASP.Net Identity 2.0</a>
+    <a class="list-group-item">OAuth 2.0</a>
+    <a class="list-group-item">OWIN Authentication Middleware</a>
+    <a class="list-group-item">Entity Framework 6</a>
+    <a class="list-group-item">Unit of Work & Repository Pattern</a>
+</div>
+
+<h3>Security</h3>
+<p>
+    Security is handled by a custom ASP.Net Identity system. ASP.NET Identity can be used with all of the ASP.NET frameworks,
+    such as ASP.NET MVC, Web Forms, Web Pages, Web API, and SignalR. ASP.NET Identity can be used when you are building web,
+    phone, store, or hybrid applications. When a user is registered with our system we can grant them access to one or many
+    applications based on their security profile. The same login credentials will grant access to a whole suite of applications.
+</p>
+<p>
+    After a succesfull login the client is issued a JWT Bearer Token for security. This contains all the basic information we
+    need to authorize that user. We include in the JWT Token a username and id as well as role and permission data. This
+    token also includes an expiration date. Once authenticated the client will have access until the token expires or the
+    user logs out. We then use this information to control the UI presented to the user on the client as well as passing
+    this token with each request to be authenticated on the server.
+</p>
+<p>
+    The JWT Bearer tokens are digitally signed using a HMAC algorithm and an secret key on the server, meaning they can be verified
+    and trusted. With each request for information from the client we include the Token and verify it on the server before
+    any data is returned to the client. Https will ensure end to end security for the tokens.
+</p>
+
+<h3>Architecture Overview</h3>
+<p>
+    The overall solution consists of a html5 client front end app, a web api with a MVC information head, and a SQL backend.
+    Both the client and web api can be scaled indefinetly to respond to demand. As different clients are added we can also
+    scale out just the api as needed.
+</p>
