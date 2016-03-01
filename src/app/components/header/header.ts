@@ -26,7 +26,7 @@ export class Header {
 
     onLogOff() {
         this.auth.logout();
-        this.router.navigate(['LoginPage']);
+        this.router.navigate(['Login']);
     }
 
     userHasPermission(permission: String) {

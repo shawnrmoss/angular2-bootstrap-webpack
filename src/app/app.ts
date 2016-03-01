@@ -1,18 +1,27 @@
 /*
  * Angular 2 decorators and services
  */
-import {Component} from 'angular2/core';
+import {Component, ElementRef, OnInit} from 'angular2/core';
 import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 
 import {RouterActive} from './directives/router-active';
-//Components
-import {Header} from './components/header/header';
 
+//Services
+import {AuthService} from './services/auth.service';
+
+//Views
 import {Home} from './views/home/home';
 import {About} from './views/about/about';
+import {Login} from './views/login/login';
 
+//Components
+import {Header} from './components/header/header';
+import {Sidebar} from './components/sidebar/sidebar';
+
+//Styles
 import '../assets/scss/main.scss';
+import './app.scss';
 
 /*
  * App Component
@@ -21,60 +30,66 @@ import '../assets/scss/main.scss';
 @Component({
   selector: 'app',
   providers: [ ...FORM_PROVIDERS ],
-  directives: [ ...ROUTER_DIRECTIVES, RouterActive, Header ],
-  pipes: [],
-  styles: [`
-    nav ul {
-      display: inline;
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      width: 60px;
-    }
-    nav li {
-      display: inline;
-    }
-    nav li.active {
-      background-color: lightgray;
-    }
-  `],
+  directives: [ ...ROUTER_DIRECTIVES, RouterActive, Header, Sidebar ],
+  pipes: [],  
   template: `
-    <header>      
-    </header>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-    <footer>
-      WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a>
-      <div>
-        <img [src]="angularclassLogo" width="10%">
-      </div>
-    </footer>
+    <div class="wrapper" (window:resize)="onResize($event)" >    
+        <div class="row">
+            <div class="col-md-12 header">
+                <header></header>
+            </div>
+        </div>        
+        <div class="row stage">
+            <aside id="aside" class="col-md-2 aside visible-lg-block visible-md-block">           
+                <sidebar></sidebar>
+            </aside>
+            <div id="main" class="col-md-10 main ">  
+                <bread-crumb></bread-crumb>          
+                <router-outlet></router-outlet>
+            </div>
+        </div>       
+    </div>
   `
 })
 @RouteConfig([
   { path: '/', component: Home, name: 'Index' },
   { path: '/home', component: Home, name: 'Home' },
   { path: '/about', component: About, name: 'About' },
+  { path: '/login', component: Login, name: 'Login' },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   //{ path: '/about', loader: () => require('es6-promise!./about/about')('About'), name: 'About' },
   { path: '/**', redirectTo: ['Index'] }
 ])
-export class App {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
-  constructor() {
+export class App implements OnInit {
+  public loggedOn: boolean;
 
-  }
+    constructor(private auth: AuthService,
+        private element: ElementRef) {
+        this.loggedOn = auth.isAuthenticated();
+    }
+
+    ngOnInit() {
+        this.resize();
+    }
+
+    onResize(event) {
+        this.resize();
+    }
+
+    resize() {
+        let height = window.innerHeight;
+        //header = 75, padding around wrapper 10
+        height = height - 105;
+        //Aside
+
+        this.element.nativeElement.children[0].children[1]
+            .childNodes[1].style.minHeight = height + 'px';
+        this.element.nativeElement.children[0].children[1]
+            .childNodes[1].style.maxHeight = height + 'px';
+        //Main
+        this.element.nativeElement.children[0].children[1]
+            .childNodes[3].style.minHeight = height + 'px';
+        this.element.nativeElement.children[0].children[1]
+            .childNodes[3].style.maxHeight = height + 'px';
+    }
 }
-
-/*
- * Please review the https://github.com/AngularClass/angular2-examples/ repo for
- * more angular app examples that you may copy/paste
- * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
- * For help or questions please contact us at @AngularClass on twitter
- * or our chat on Slack at https://AngularClass.com/slack-join
- */
