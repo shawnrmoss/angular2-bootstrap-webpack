@@ -12,9 +12,6 @@ import {SecuredRouterOutlet} from './directives/secured-router-outlet';
 //Services
 import {AuthService} from './services/auth.service';
 
-//Layout 
-import {TwoColumnSidebar} from './layouts/two-column-sidebar/two-column-sidebar';
-
 //Views
 import {Home} from './views/home/home';
 import {About} from './views/about/about';
@@ -36,25 +33,10 @@ import './app.scss';
 @Component({
   selector: 'app',
   providers: [ ...FORM_PROVIDERS ],
-  directives: [ ...ROUTER_DIRECTIVES, RouterActive, Header, Sidebar, TwoColumnSidebar, SecuredRouterOutlet ],
+  directives: [ ...ROUTER_DIRECTIVES, RouterActive, SecuredRouterOutlet ],
   pipes: [],  
   template: `
-    <div class="wrapper" (window:resize)="onResize($event)" >    
-        <div class="row">
-            <div class="col-md-12 header">
-                <header></header>
-            </div>
-        </div>        
-        <div class="row stage">
-            <aside id="aside" class="col-md-2 aside visible-lg-block visible-md-block">           
-                <sidebar></sidebar>
-            </aside>
-            <div id="main" class="col-md-10 main ">  
-                <bread-crumb></bread-crumb>          
-                <router-outlet></router-outlet>
-            </div>
-        </div>       
-    </div>
+    <router-outlet></router-outlet>
   `
 })
 @RouteConfig([
@@ -76,11 +58,11 @@ export class App implements OnInit {
     }
 
     ngOnInit() {
-        this.resize();
+        //this.resize();
     }
 
     onResize(event) {
-        this.resize();
+        //this.resize();
     }
 
     resize() {

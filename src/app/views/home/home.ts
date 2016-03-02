@@ -1,10 +1,14 @@
 import {Component} from 'angular2/core';
 
+//Layout
+import {HeaderTwoColumn} from '../../layouts/header-two-column/header-two-column';
+
 let template = require('./home.html');
 
 @Component({
     selector: 'home',    
-    template: template
+    template: template,
+    directives: [HeaderTwoColumn]
 })
 export class Home {
 
