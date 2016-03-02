@@ -12,6 +12,9 @@ import {SecuredRouterOutlet} from './directives/secured-router-outlet';
 //Services
 import {AuthService} from './services/auth.service';
 
+//Layout 
+import {TwoColumnSidebar} from './layouts/two-column-sidebar/two-column-sidebar';
+
 //Views
 import {Home} from './views/home/home';
 import {About} from './views/about/about';
@@ -33,7 +36,7 @@ import './app.scss';
 @Component({
   selector: 'app',
   providers: [ ...FORM_PROVIDERS ],
-  directives: [ ...ROUTER_DIRECTIVES, RouterActive, Header, Sidebar, SecuredRouterOutlet ],
+  directives: [ ...ROUTER_DIRECTIVES, RouterActive, Header, Sidebar, TwoColumnSidebar, SecuredRouterOutlet ],
   pipes: [],  
   template: `
     <div class="wrapper" (window:resize)="onResize($event)" >    
@@ -83,7 +86,7 @@ export class App implements OnInit {
     resize() {
         let height = window.innerHeight;
         //header = 75, padding around wrapper 10
-        height = height - 100;
+        height = height - 108;
         //Aside
 
         this.element.nativeElement.children[0].children[1]
