@@ -4,11 +4,13 @@ import {Component, ElementRef, OnInit} from 'angular2/core';
 import {Header} from '../../components/header/header';
 import {Sidebar} from '../../components/sidebar/sidebar';
 
+//Styles once its imported its applied
+import './header-two-column.scss';
 
 let template = require('./header-two-column.html');
 
 @Component({
-    selector: 'header-two-column',    
+    selector: 'header-two-column',        
     template: template,
     directives: [Header, Sidebar]
 })
