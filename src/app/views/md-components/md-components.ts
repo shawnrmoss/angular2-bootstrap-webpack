@@ -10,7 +10,10 @@ import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
 })
 export class MdComponents {    
 
+   
+  
     constructor() {
-        
+        // Iterate every 100ms, non-stop
+   
     }
 }

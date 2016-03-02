@@ -1,3 +1,10 @@
+$md-font-url: "../../../node_modules/ng2-material/dist/";
+@import "../../../node_modules/ng2-material/dist/font.scss";
+@import "../../../node_modules/ng2-material/source/core";
+$md-primary: md-palette($md-brown, 500, 100, 700, $md-contrast-palettes);
+$md-accent: md-palette($md-deep-orange, 500, 300, 700, $md-contrast-palettes);
+@import "../../../node_modules/ng2-material/source/components";
+
 // Libs
 @import './lib/colors';
 @import './lib/vars';
@@ -5,10 +12,6 @@
 // Base.
 @import 'base/page';
 @import 'base/typography';
-
-//$md-font-url: "node_modules/ng2-material/dist/";
-//@import "node_modules/ng2-material/dist/font.scss";
-//@import "node_modules/ng2-material/source/all";
 
 //Fixes an element to the bottom right
 .btm-right-fixed{

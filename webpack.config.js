@@ -43,7 +43,7 @@ module.exports = helpers.validate({
   },
 
   resolve: {
-    extensions: ['', '.ts', '.async.ts', '.js', '.scss', '.html']
+    extensions: ['', '.ts', '.async.ts', '.js', '.scss', '.html', '.woff', '.woff2', '.tff', '.eot', '.svg']
   },
 
   module: {
@@ -65,10 +65,11 @@ module.exports = helpers.validate({
       // support for .html as raw text
       { test: /\.html$/,  loader: 'raw-loader', exclude: [ helpers.root('src/index.html') ] },
       
-      //Support for SCSS            
-      { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
-      
-      { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' }
+      { test: /\.scss$/, loaders: ['style', 'css?sourceMap', 'sass?sourceMap'] },          
+
+      // support for fontawesome/bootstrap files
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&minetype=application/font-woff' },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' }
 
     ]
   },

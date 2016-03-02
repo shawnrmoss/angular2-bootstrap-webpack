@@ -5,7 +5,9 @@ import {Component, ElementRef, OnInit} from 'angular2/core';
 import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 
+//Directives
 import {RouterActive} from './directives/router-active';
+import {SecuredRouterOutlet} from './directives/secured-router-outlet';
 
 //Services
 import {AuthService} from './services/auth.service';
@@ -31,7 +33,7 @@ import './app.scss';
 @Component({
   selector: 'app',
   providers: [ ...FORM_PROVIDERS ],
-  directives: [ ...ROUTER_DIRECTIVES, RouterActive, Header, Sidebar ],
+  directives: [ ...ROUTER_DIRECTIVES, RouterActive, Header, Sidebar, SecuredRouterOutlet ],
   pipes: [],  
   template: `
     <div class="wrapper" (window:resize)="onResize($event)" >    
@@ -81,7 +83,7 @@ export class App implements OnInit {
     resize() {
         let height = window.innerHeight;
         //header = 75, padding around wrapper 10
-        height = height - 105;
+        height = height - 100;
         //Aside
 
         this.element.nativeElement.children[0].children[1]
